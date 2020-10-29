@@ -14,11 +14,31 @@ function addBlog() {
     blog.body = document.getElementById("body").value;
     blog.author = document.getElementById("author").value;
     blog.logo = document.getElementById("logo").value;
-    blog.url = document.getElementById("header").value.substring(0,10);
+    blog.url = document.getElementById("header").value.substring(0, 10);
     blog.comments = [];
     console.log(blog);
+
+    if (blog.header.length == 0) {
+        alert('Header is required!!!');
+        document.getElementById("header").focus();
+        return false;
+    }
+
+    if (blog.author.length == 0) {
+        alert('Author is required!!!');
+        document.getElementById("author").focus();
+        return false;
+    }
+
+    if (blog.body.length == 0) {
+        alert('Body is required!!!');
+        document.getElementById("body").focus();
+        return false;
+    }
+
+
     blogs.push(blog);
     localStorage.setItem("blogs", JSON.stringify(blogs));
-    window.location.href = 'blogs.html';
+    return true;
 
 }

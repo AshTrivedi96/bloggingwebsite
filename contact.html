@@ -61,17 +61,22 @@
 </nav>
 
 <body>
+
+        <div class="row">
+            <div class="col-md-8">
     <h1 class="text-center">Contact us</h1><br>
+</div>
+</div>
     <div class="container">
 
 
         <div class="row">
             <div class="col-md-8">
-                <form action="/post" method="post">
-                    <input class="form-control" name="name" placeholder="Name..."><br>
-                    <input class="form-control" name="phone" placeholder="Phone..."><br>
-                    <input class="form-control" name="email" placeholder="E-mail..."><br>
-                    <textarea class="form-control" name="text" placeholder="How can we help you?" style="height:150px;"></textarea><br>
+                <form method="post" onsubmit="return validateContactUs()">
+                    <input class="form-control" id="name" name="name" placeholder="Name..."><br>
+                    <input class="form-control" id="phone" name="phone" placeholder="Phone..."><br>
+                    <input class="form-control" id="email" name="email" placeholder="E-mail..."><br>
+                    <textarea class="form-control" id="text" name="text" placeholder="How can we help you?" style="height:150px;"></textarea><br>
                     <input class="btn btn-primary" type="submit" value="Send"><br><br>
                 </form>
             </div>
@@ -97,6 +102,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="js/contactUs.js"></script>
 </body>
 <!-- Footer -->
 <footer class="page-footer font-small blue">

@@ -41,9 +41,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="home.html">Home</a></li>
-                <li><a href="blogs.html">Blog</a> </li>
+                <li class="active"><a href="blogs.html">Blog</a> </li>
                 <li><a href="profile.html">About</a></li>
-                <li class="active"><a href="contact.html">Contact Us <span class="sr-only">(current)</span></a></li>
+                <li><a href="contact.html">Contact Us <span class="sr-only">(current)</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span>Akshay </a></li>
@@ -70,8 +70,8 @@
 
             </div>
             <div class="col-md-8">
-                <form>
-                    <input class="form-control" id="header" name="header" placeholder="Header..."><br>
+                <form id="addBlog" type="post" action="blogs.html" onsubmit="return addBlog()">
+                    <input class="form-control" id="header" name="header" placeholder="Header..." ><br>
                     <input class="form-control" id="author" name="author" placeholder="Author..."><br>
                     <select class="form-control" id="logo" name="logo">
                         <option value="aws.png">AWS</option>
@@ -82,7 +82,7 @@
                         <option value="profile.JPG">Profile</option>
                     </select><br>
                     <textarea class="form-control" id="body" name="body" placeholder="Blog body" style="height:150px;"></textarea><br>
-                    <input class="btn btn-primary" type="button"  onclick="addBlog()" value="Add"><br><br>
+                    <input class="btn btn-primary" type="submit" value="Add"><br><br>
                 </form>
             </div>
             <div class="col-md-2">
