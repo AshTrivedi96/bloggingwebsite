@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Blogs</title>
+    <title>Add Blog</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -41,10 +41,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="home.html">Home</a></li>
-                <li class="active"><a href="blogs.html">Blog <span class="sr-only">(current)</span></a></li>
+                <li><a href="blogs.html">Blog</a> </li>
                 <li><a href="profile.html">About</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                </li>
+                <li class="active"><a href="contact.html">Contact Us <span class="sr-only">(current)</span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span>Akshay </a></li>
@@ -62,9 +61,35 @@
 </nav>
 
 <body>
+    <h1 class="text-center">Add New Blog</h1><br>
     <div class="container">
-        <h1 style="text-align: center;"> Welcome to the blogging world! <a href="addBlog.html" class="btn btn-primary" style="float: right;">Add Blog</a></h1>
-        <div id="blogs"></div>
+
+        <div class="row">
+            <div class="col-md-2">
+               
+
+            </div>
+            <div class="col-md-8">
+                <form>
+                    <input class="form-control" id="header" name="header" placeholder="Header..."><br>
+                    <input class="form-control" id="author" name="author" placeholder="Author..."><br>
+                    <select class="form-control" id="logo" name="logo">
+                        <option value="aws.png">AWS</option>
+                        <option value="logo.png">Tata Logo</option>
+                        <option value="cloudformation.png">Cloud Formation</option>
+                        <option value="cloudwatch.png">Cloud Watch</option>
+                        <option value="EC2.png">EC2</option>
+                        <option value="profile.JPG">Profile</option>
+                    </select><br>
+                    <textarea class="form-control" id="body" name="body" placeholder="Blog body" style="height:150px;"></textarea><br>
+                    <input class="btn btn-primary" type="button"  onclick="addBlog()" value="Add"><br><br>
+                </form>
+            </div>
+            <div class="col-md-2">
+               
+
+            </div>
+        </div>
 
     </div>
 
@@ -73,7 +98,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src="js/blogs.js"></script>
+    <script src="js/addBlog.js"></script>
 </body>
 <!-- Footer -->
 <footer class="page-footer font-small blue">
