@@ -10,7 +10,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/custom.css" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,30 +40,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Blog <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">About</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Forms</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Report a Problem</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">SiteMap</a></li>
-                    </ul>
-                </li>
+                <li><a href="home.html">Home</a></li>
+                <li class="active"><a href="blogs.html">Blog <span class="sr-only">(current)</span></a></li>
+                <li><a href="profile.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>Akshay <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Change Password</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Log out</a></li>
-                    </ul>
-                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>Akshay </a></li>
             </ul>
             <form class="navbar-form navbar-right">
                 <div class="form-group">
@@ -78,7 +61,43 @@
 </nav>
 
 <body>
-    <h1 style="text-align: center;"> Welcome to the blogging world!</h1>
+    <div class="container">
+        <img class="media-object float-right" style='height: 100px; width: 100px;  object-fit: contain' src="images/aws.png">
+        <h1 class="lb-h2 blog-post-title" property="name headline">Building a cross-account CI/CD pipeline for single-tenant SaaS solutions</h1>
+        <span property="author" typeof="Person"><span property="name">Rafael Ramos</span></span>
+        |
+        <time property="datePublished" datetime="2020-01-29T11:13:18-07:00">17 Oct 2020</time>
+        <section class="blog-content">
+            <p>With the increasing demand from enterprise customers for a pay-as-you-go consumption model, more and more independent software vendors (ISVs) are shifting their business model towards software as a service (SaaS). Usually this kind of solution
+                is architected using a multi-tenant model. It means that the infrastructure resources and applications are shared across multiple customers, with mechanisms in place to isolate their environments from each other. However, you may not want
+                or can’t afford to share resources for security or compliance reasons, so you need a single-tenant environment.</p>
+            <p>To achieve this higher level of segregation across the tenants, it’s recommended to isolate the environments on the AWS account level. This strategy brings benefits, such as no network overlapping, no account limits sharing, and simplified
+                usage tracking and billing, but it comes with challenges from an operational standpoint. Whereas multi-tenant solutions require management of a single shared production environment, single-tenant installations consist of dedicated production
+                environments for each customer, without any shared resources across the tenants. When the number of tenants starts to grow, delivering new features at a rapid pace becomes harder to accomplish, because each new version needs to be manually
+                deployed on each tenant environment.</p>
+            <p>This post describes how to automate this deployment process to deliver software quickly, securely, and less error-prone for each existing tenant. I demonstrate all the steps to build and configure a CI/CD pipeline using <a href="http://aws.amazon.com/codecommit">AWS CodeCommit</a>,
+                <a href="http://aws.amazon.com/codepipeline">AWS CodePipeline</a>, <a href="http://aws.amazon.com/codebuild">AWS CodeBuild</a>, and <a href="http://aws.amazon.com/cloudformation">AWS CloudFormation</a>. For each new version, the pipeline
+                automatically deploys the same application version on the multiple tenant AWS accounts.</p>
+            <p>There are different caveats to build such cross-account CI/CD pipelines on AWS. Because of that, I use <a href="http://aws.amazon.com/cli">AWS Command Line Interface</a> (AWS CLI) to manually go through the process and demonstrate in detail
+                the various configuration aspects you have to handle, such as artifact encryption, cross-account permission granting, and pipeline actions.</p>
+            <h2>Single-tenancy vs. multi-tenancy</h2>
+            <p>One of the first aspects to consider when architecting your SaaS solution is its tenancy model. Each brings their own benefits and architectural challenges. On multi-tenant installations, each customer shares the same set of resources, including
+                databases and applications. With this mode, you can use the servers’ capacity more efficiently, which generally leads to significant cost-saving opportunities. On the other hand, you have to carefully secure your solution to prevent a
+                customer from accessing sensitive data from another. Designing for high availability becomes even more critical on multi-tenant workloads, because more customers are affected in the event of downtime.</p>
+            <p>Because the environments are by definition isolated from each other, single-tenant solutions are simpler to design when it comes to security, networking isolation, and data segregation. Likewise, you can customize the applications per customer,
+                and have different versions for specific tenants. You also have the advantage of eliminating the noisy-neighbor effect, and can plan the infrastructure for the customer’s scalability requirements. As a drawback, in comparison with multi-tenant,
+                the single-tenant model is operationally more complex because you have more servers and applications to maintain.</p>
+            <p>Which tenancy model to choose depends ultimately on whether you can meet your customer needs. They might have specific governance requirements, be bound to a certain industry regulation, or have compliance criteria that influences which model
+                they can choose. For more information about modeling your SaaS solutions, see <a href="https://aws.amazon.com/partners/saas-on-aws/">SaaS on AWS</a>.</p>
+        </section>
+
+    </div>
+
+
+
+
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
